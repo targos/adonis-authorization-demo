@@ -26,7 +26,8 @@
       "@adonisjs/core",
       "@adonisjs/auth",
       "@adonisjs/lucid",
-      "@adonisjs/view"
+      "@adonisjs/view",
+      "@adonisjs/session"
     ]
   }
 }

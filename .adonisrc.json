@@ -22,7 +22,8 @@
     "@adonisjs/auth",
     "@adonisjs/lucid",
     "./providers/Authorization/AuthorizationProvider",
-    "@adonisjs/view"
+    "@adonisjs/view",
+    "@adonisjs/session"
   ],
   "metaFiles": [
     ".env",

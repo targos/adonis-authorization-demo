@@ -1,0 +1,29 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+    <form action="{{ route('AuthController.login') }}" method="post">
+      <div>
+        <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Email</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input id="email" name="email" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="you@example.com">
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium leading-5 text-gray-700">Password</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input id="password" type="password" name="password" class="form-input block w-full sm:text-sm sm:leading-5">
+        </div>
+      </div>
+
+      <div>
+        <span class="inline-flex rounded-md shadow-sm">
+          <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+            Login
+          </button>
+        </span>
+      </div>
+    </form>
+  </main>
+@endsection

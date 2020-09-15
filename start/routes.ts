@@ -20,6 +20,17 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/', async ({ view, auth }) => {
+  return view.render('index', { user: auth.user })
+}).middleware('silentAuth')
+
+Route.group(() => {
+  Route.on('register').render('auth/register')
+  Route.post('register', 'AuthController.register')
+  Route.on('login').render('auth/login')
+  Route.post('login', 'AuthController.login')
+  Route.get('logout', async ({ auth, response}) => {
+    await auth.logout()
+    return response.redirect('/')
+  })
+}).prefix('auth')

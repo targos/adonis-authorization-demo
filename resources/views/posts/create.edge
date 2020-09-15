@@ -1,0 +1,35 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+    <h1 class="mt-6 mb-4 text-lg font-bold">Create a post</h1>
+    <form action="{{ route('PostsController.store') }}" method="post">
+      <div>
+        <label for="name" class="block text-sm font-medium leading-5 text-gray-700">Name</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input id="name" name="name" class="form-input block w-full sm:text-sm sm:leading-5">
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <label for="contents" class="block text-sm leading-5 font-medium text-gray-700">
+          Contents
+        </label>
+        <div class="rounded-md shadow-sm">
+          <textarea id="contents" name="contents" rows="3" class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
+        </div>
+        <p class="mt-2 text-sm text-gray-500">
+          Write the contents of the post.
+        </p>
+      </div>
+
+      <div>
+        <span class="inline-flex rounded-md shadow-sm">
+          <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+            Create post
+          </button>
+        </span>
+      </div>
+    </form>
+  </main>
+@endsection

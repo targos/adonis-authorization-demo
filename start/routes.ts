@@ -34,3 +34,7 @@ Route.group(() => {
     return response.redirect('/')
   })
 }).prefix('auth')
+
+Route.group(() => {
+  Route.resource('posts', 'PostsController')
+}).middleware('silentAuth')

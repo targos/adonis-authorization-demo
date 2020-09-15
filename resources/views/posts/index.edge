@@ -1,0 +1,22 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+    @if(user)
+      <a class="underline" href="/posts/create">Create a post</a>
+    @endif
+
+
+    @if(numPosts)
+      <ul class="list-disc ml-4">
+        @each(post in posts)
+          <li>
+            <a class="underline" href="/posts/{{ post.id }}">{{ post.name }}</a>
+          </li>
+        @endeach
+      </ul>
+    @else
+      <div>No posts to show.</div>
+    @endif
+  </main>
+@endsection

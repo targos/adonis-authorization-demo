@@ -1,0 +1,10 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+    <h1 class="mt-6 mb-4 text-lg font-bold">{{ post.name }}</h1>
+    <div class="whitespace-pre">
+      {{ post.contents }}
+    </div>
+  </main>
+@endsection

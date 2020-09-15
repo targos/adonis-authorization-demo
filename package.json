@@ -23,6 +23,7 @@
     "@adonisjs/core": "^5.0.0-preview-rc-1.12",
     "@adonisjs/fold": "^6.4.0",
     "@adonisjs/lucid": "^8.4.2",
+    "@adonisjs/view": "^2.0.9",
     "luxon": "^1.25.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",

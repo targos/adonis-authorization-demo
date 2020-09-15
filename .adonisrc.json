@@ -21,10 +21,12 @@
     "@adonisjs/core",
     "@adonisjs/auth",
     "@adonisjs/lucid",
-    "./providers/Authorization/AuthorizationProvider"
+    "./providers/Authorization/AuthorizationProvider",
+    "@adonisjs/view"
   ],
   "metaFiles": [
     ".env",
-    ".adonisrc.json"
+    ".adonisrc.json",
+    "resources/views/**/*.edge"
   ]
 }

@@ -1,6 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Post from 'App/Models/Post'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import PostPolicy from 'App/Policies/PostPolicy'
 
 export default class PostsController {
   public async index (ctx: HttpContextContract) {
@@ -17,9 +18,8 @@ export default class PostsController {
   }
 
   public async store (ctx: HttpContextContract) {
-    await ctx.auth.authenticate()
-    if (!ctx.auth.user) {
-      throw new Error('unreachable')
+    if (!(await ctx.gate.allows(PostPolicy, 'create'))) {
+      throw new Error('Forbidden to create posts')
     }
 
     const validationSchema = schema.create({
@@ -33,6 +33,11 @@ export default class PostsController {
       schema: validationSchema,
     })
 
+    // TODO: how can we avoid this?
+    // Without this check, we cannot access ctx.auth.user.id below.
+    if (!ctx.auth.user) {
+      throw new Error('unreachable')
+    }
     const post = await Post.create({
       ...postDetails,
       userId: ctx.auth.user.id,
@@ -42,8 +47,11 @@ export default class PostsController {
   }
 
   public async show (ctx: HttpContextContract) {
-    console.log(ctx.params)
     const post = await Post.findByOrFail('id', ctx.params.id)
+
+    if (!(await ctx.gate.allows(PostPolicy, 'show', post))) {
+      throw new Error('Forbidden to show post')
+    }
 
     return ctx.view.render('posts/show', { user: ctx.auth.user, post })
   }

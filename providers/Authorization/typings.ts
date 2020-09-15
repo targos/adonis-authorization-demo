@@ -1,6 +1,7 @@
 declare module '@ioc:Adonis/Addons/Authorization' {
-  // TODO: import User type from auth package?
-  export interface User {}
+  // TODO: expose user type from @ioc:Adonis/Addons/Auth ?
+  import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+  export type User = Exclude<HttpContextContract['auth']['user'], undefined>
 
   export interface GlobalActions {}
 

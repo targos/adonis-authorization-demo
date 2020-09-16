@@ -128,7 +128,7 @@ export const http: HttpConfig = {
   | to set the header explicitly.
   |
   */
-  forceContentNegotiationToJSON: true,
+  forceContentNegotiationToJSON: false,
 }
 
 /*

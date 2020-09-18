@@ -3,13 +3,14 @@ import { IocContract } from '@adonisjs/fold'
 import { HttpContextConstructorContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Gate from './Gate'
+import gateDecorator from './gateDecorator'
 
 export default class AuthorizationProvider {
   constructor (protected container: IocContract) {}
 
   public register () {
     this.container.singleton('Adonis/Addons/Authorization', () => {
-      return { Gate: new Gate() }
+      return { Gate: new Gate(), gate: gateDecorator }
     })
   }
 

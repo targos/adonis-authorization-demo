@@ -13,6 +13,7 @@
     "Database": "database"
   },
   "preloads": [
+    "./start/authorization",
     "./start/routes",
     "./start/kernel"
   ],

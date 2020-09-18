@@ -18,7 +18,7 @@ export default class PostsController {
   }
 
   public async store (ctx: HttpContextContract) {
-    if (!(await ctx.gate.allows(PostPolicy, 'create'))) {
+    if (!(await ctx.gate.for<typeof PostPolicy>(Post).allows('create'))) {
       throw new Error('Forbidden to create posts')
     }
 
@@ -49,7 +49,7 @@ export default class PostsController {
   public async show (ctx: HttpContextContract) {
     const post = await Post.findByOrFail('id', ctx.params.id)
 
-    if (!(await ctx.gate.allows(PostPolicy, 'show', post))) {
+    if (!(await ctx.gate.for<typeof PostPolicy>(post).allows('show'))) {
       throw new Error('Forbidden to show post')
     }
 
